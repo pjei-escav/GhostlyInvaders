@@ -6,27 +6,61 @@ public class MovimientoPacMan : MonoBehaviour
 {
 
     Vector2 PosicionActual;
-    Vector2 SegundoVector;
+    Vector2 PosicionFinal;
     Rigidbody2D rb;
 
+    Vector2 VectorDerecha;
+    Vector2 VectorIzquierda;
 
+    SpriteRenderer sprite;
 
+    bool miraIzquierda = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        SegundoVector = Vector2(0, 2);
+        sprite = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+        VectorDerecha = new Vector2(0.1f, 0);
+        VectorIzquierda = -VectorDerecha;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        PosicionActual = rb.position;
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            MueveIzquierda();
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            MueveDerecha();
+        }
     }
 
     void MueveDerecha()
     {
-        rb.GetVector
+        PosicionFinal = PosicionActual + VectorDerecha;
+        rb.transform.position = PosicionFinal;
+
+        if (miraIzquierda)
+        {
+            sprite.flipX=true;
+            miraIzquierda = false;
+        }
+    }
+
+    void MueveIzquierda()
+    {
+        PosicionFinal = PosicionActual + VectorIzquierda;
+        rb.transform.position = PosicionFinal;
+
+        if (!miraIzquierda)
+        {
+            sprite.flipX = false;
+            miraIzquierda = true;
+        }
     }
 
 
