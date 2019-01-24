@@ -23,9 +23,9 @@ public class MovimientoFantasmas : MonoBehaviour
 
         VectorDerecha = new Vector2(0.1f, 0f);
         VectorIzquierda = -VectorDerecha;
-        VectorAbajo = new Vector2(1f, 0f);
+        VectorAbajo = new Vector2(0f, -1f);
 
-        MovimientoIzquierda();
+        
     }
 
     // Update is called once per frame
@@ -62,13 +62,24 @@ public class MovimientoFantasmas : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("LimiteIzquierda"))
         {
+            
+
             moviendoDerecha = true;
-            rb.transform.position = PosicionActual + VectorAbajo;
+
+            PosicionFinal = PosicionActual + VectorAbajo;
+            rb.transform.position = PosicionFinal;
+
+            Debug.Log(PosicionFinal.y);
+
         }
         if (collision.gameObject.CompareTag("LimiteDerecha"))
         {
+            
+
             moviendoDerecha = false;
-            rb.transform.position = PosicionActual + VectorAbajo;
+
+            PosicionFinal = PosicionActual + VectorAbajo;
+            rb.transform.position = PosicionFinal;
         }
     }
 
