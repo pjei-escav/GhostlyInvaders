@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Limites
+  - LimiteDerecha
+  - LimiteIzquierda
   layers:
   - Default
   - TransparentFX
