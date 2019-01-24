@@ -25,7 +25,7 @@ public class PacManComtroller : MonoBehaviour
     public float fuerzaProyectil = 5f;
 
     public float retraso = 2f;
-    public float tiempoUltimoDisparo = 0f;
+    float tiempoUltimoDisparo = -2f;
 
 
     bool enMovimiento = false;
@@ -53,23 +53,32 @@ public class PacManComtroller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             MueveIzquierda();
-            Invoke("Falsea", 0.1f);
+
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             MueveDerecha();
-            Invoke("Falsea", 0.1f);
+
+        }
+        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            enMovimiento = false;
+
+        }
+        if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            enMovimiento = false;
+
         }
 
-        
+
 
         //---------------------------------COSAS DEL DISPARO
 
-        if (Input.GetKeyDown(KeyCode.A) && (!enMovimiento) && (tiempoUltimoDisparo + retraso >= Time.time))
+        if (Input.GetKeyDown(KeyCode.A) && (!enMovimiento) && (Time.time >= tiempoUltimoDisparo + retraso))
         {
-            tiempoUltimoDisparo = Time.time;
             Disparar();
-
+            tiempoUltimoDisparo = Time.time;
         }
         
 
@@ -110,7 +119,7 @@ public class PacManComtroller : MonoBehaviour
         quaternion = Quaternion.Euler(new Vector3(0f, 0f, -90f));
         transform.rotation = quaternion;
         Invoke("Bala", 0.2f);
-        Invoke("Verdadea", 0.01f);
+
         
         
     }
@@ -119,25 +128,6 @@ public class PacManComtroller : MonoBehaviour
     {
         Instantiate(Proyectil, Generador.position, Quaternion.identity);
     }
-
-    //Sirve para hacer bucle     Haber estudiado
-    void Falsea()
-    {
-        enMovimiento = false;
-    }
-
-    //Sirve para hacer bucle     Haber estudiado
-    void Verdadea()
-    {
-        enMovimiento = true;
-        Invoke("Falsea", 3f);
-    }
-
-
-
-
-
-
 
 
 }
