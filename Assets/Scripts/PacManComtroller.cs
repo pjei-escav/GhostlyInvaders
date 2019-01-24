@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovimientoPacMan : MonoBehaviour
+public class PacManComtroller : MonoBehaviour
 {
 
     Rigidbody2D rb;
-    Animator animacion;
-    SpriteRenderer sprite;
+
+    
 
     Vector2 PosicionActual;
     Vector2 PosicionFinal;
@@ -16,7 +16,7 @@ public class MovimientoPacMan : MonoBehaviour
     Vector2 VectorIzquierda;
     
 
-    bool miraIzquierda = true;
+
 
 
     public GameObject Proyectil;
@@ -24,21 +24,24 @@ public class MovimientoPacMan : MonoBehaviour
 
     public float fuerzaProyectil = 5f;
 
+    public float retraso = 2f;
+    public float tiempoUltimoDisparo = 0f;
+
 
     bool enMovimiento = false;
-    bool enDisparo = false;
 
-
+    Quaternion quaternion;
 
     // Start is called before the first frame update
     void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
+
         rb = GetComponent<Rigidbody2D>();
         VectorDerecha = new Vector2(0.1f, 0);
         VectorIzquierda = -VectorDerecha;
-        animacion = GetComponent<Animator>();
-        
+
+
+        quaternion = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
     }
 
     // Update is called once per frame
@@ -47,36 +50,28 @@ public class MovimientoPacMan : MonoBehaviour
         //---------------------------------COSAS DEL MOVIMIENTO
 
         PosicionActual = rb.position;
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && (!enDisparo))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             MueveIzquierda();
+            Invoke("Falsea", 0.1f);
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow) && (!enDisparo))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             MueveDerecha();
+            Invoke("Falsea", 0.1f);
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftArrow))
-        {
-            enMovimiento = false;
-        }
-        if (Input.GetKeyUp(KeyCode.RightArrow))
-        {
-            enMovimiento = false;
-        }
+        
 
         //---------------------------------COSAS DEL DISPARO
 
-        if (Input.GetKey(KeyCode.Space) && (!enMovimiento))
+        if (Input.GetKeyDown(KeyCode.A) && (!enMovimiento) && (tiempoUltimoDisparo + retraso >= Time.time))
         {
+            tiempoUltimoDisparo = Time.time;
             Disparar();
 
         }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            Invoke("Retraso", 0.2f);
-            
-        }
+        
 
     }
 
@@ -89,12 +84,8 @@ public class MovimientoPacMan : MonoBehaviour
         rb.transform.position = PosicionFinal;
         enMovimiento = true;
 
-        //if (miraIzquierda)
-       // {
-           // transform.rotation = new Quaternion(transform.rotation.x, 180f, transform.rotation.z, transform.rotation.w);
-            //miraIzquierda = false;
-       // Debug.Log("rotation = " + transform.rotation);
-        // }
+        quaternion = Quaternion.Euler(new Vector3(0f, 0f, -180f));
+        transform.rotation = quaternion;
     }
 
     void MueveIzquierda()
@@ -103,13 +94,10 @@ public class MovimientoPacMan : MonoBehaviour
         rb.transform.position = PosicionFinal;
         enMovimiento = true;
 
-        //if (!miraIzquierda)
-        //{
+        quaternion = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+        transform.rotation = quaternion;
 
-           // transform.rotation = new Quaternion(transform.rotation.x, 0f, transform.rotation.z, transform.rotation.w);
-            //miraIzquierda = true;
-       // Debug.Log("rotation = " + new Quaternion(transform.rotation.x, 0f, transform.rotation.z, transform.rotation.w));
-        //}
+
     }
 
 
@@ -118,9 +106,13 @@ public class MovimientoPacMan : MonoBehaviour
 
     void Disparar()
     {
-        enDisparo = true;
+
+        quaternion = Quaternion.Euler(new Vector3(0f, 0f, -90f));
+        transform.rotation = quaternion;
         Invoke("Bala", 0.2f);
-        animacion.SetBool("Disparando", true);
+        Invoke("Verdadea", 0.01f);
+        
+        
     }
 
     void Bala()
@@ -128,11 +120,24 @@ public class MovimientoPacMan : MonoBehaviour
         Instantiate(Proyectil, Generador.position, Quaternion.identity);
     }
 
-    void Retraso()
+    //Sirve para hacer bucle     Haber estudiado
+    void Falsea()
     {
-        animacion.SetBool("Disparando", false);
-        enDisparo = false;
+        enMovimiento = false;
     }
+
+    //Sirve para hacer bucle     Haber estudiado
+    void Verdadea()
+    {
+        enMovimiento = true;
+        Invoke("Falsea", 3f);
+    }
+
+
+
+
+
+
 
 
 }
