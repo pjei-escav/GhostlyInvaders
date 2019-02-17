@@ -24,8 +24,8 @@ public class PacManComtroller : MonoBehaviour
 
     public float fuerzaProyectil = 5f;
 
-    public float retraso = 2f;
-    float tiempoUltimoDisparo = -2f;
+    public float retraso = 1f;
+    float tiempoUltimoDisparo = -1f;
 
 
     bool enMovimiento = false;

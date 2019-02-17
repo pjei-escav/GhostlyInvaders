@@ -462,7 +462,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 352457474}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.4, y: 0.19532979, z: 0}
+  m_LocalPosition: {x: -2.3, y: 0.19532979, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -519,7 +519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469136580}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.30997944, y: -6.29, z: 0}
+  m_LocalPosition: {x: 0.30997944, y: 0.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -893,7 +893,7 @@ GameObject:
   - component: {fileID: 742221687}
   m_Layer: 0
   m_Name: LimiteArriba
-  m_TagString: Untagged
+  m_TagString: Limites
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -906,7 +906,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 742221685}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.30997944, y: 5.8, z: 0}
+  m_LocalPosition: {x: 0.30997944, y: 4.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -922,7 +922,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1757,7 +1757,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1458756024}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.59, y: 0.19532979, z: 0}
+  m_LocalPosition: {x: 2.55, y: 0.19532979, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2911,6 +2911,10 @@ PrefabInstance:
       propertyPath: Generador
       value: 
       objectReference: {fileID: 851215708}
+    - target: {fileID: 844342691, guid: e1c227de1ea0d3949826f351f56e4ec9, type: 3}
+      propertyPath: retraso
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 844342695, guid: e1c227de1ea0d3949826f351f56e4ec9, type: 3}
       propertyPath: m_SortingOrder
       value: 2
