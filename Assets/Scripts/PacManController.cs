@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PacManComtroller : MonoBehaviour
+public class PacManController : MonoBehaviour
 {
 
     Rigidbody2D rb;
@@ -14,7 +15,9 @@ public class PacManComtroller : MonoBehaviour
 
     Vector2 VectorDerecha;
     Vector2 VectorIzquierda;
+
     
+
 
 
 
@@ -42,6 +45,10 @@ public class PacManComtroller : MonoBehaviour
 
 
         quaternion = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
+
+
+        
+
     }
 
     // Update is called once per frame
@@ -50,36 +57,13 @@ public class PacManComtroller : MonoBehaviour
         //---------------------------------COSAS DEL MOVIMIENTO
 
         PosicionActual = rb.position;
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            MueveIzquierda();
-
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            MueveDerecha();
-
-        }
-        if (Input.GetKeyUp(KeyCode.LeftArrow))
-        {
-            enMovimiento = false;
-
-        }
-        if (Input.GetKeyUp(KeyCode.RightArrow))
-        {
-            enMovimiento = false;
-
-        }
+        
 
 
 
         //---------------------------------COSAS DEL DISPARO
 
-        if (Input.GetKeyDown(KeyCode.A) && (!enMovimiento) && (Time.time >= tiempoUltimoDisparo + retraso))
-        {
-            Disparar();
-            tiempoUltimoDisparo = Time.time;
-        }
+        
         
 
     }
@@ -87,17 +71,21 @@ public class PacManComtroller : MonoBehaviour
 
     //--------------------------------------------------------- COSAS DEL MOVIMIENTO
 
-    void MueveDerecha()
+    public void MueveDerecha()
     {
+
+
         PosicionFinal = PosicionActual + VectorDerecha;
         rb.transform.position = PosicionFinal;
         enMovimiento = true;
 
         quaternion = Quaternion.Euler(new Vector3(0f, 0f, -180f));
         transform.rotation = quaternion;
+
+        Invoke("Falsear", 0.2f);
     }
 
-    void MueveIzquierda()
+    public void MueveIzquierda()
     {
         PosicionFinal = PosicionActual + VectorIzquierda;
         rb.transform.position = PosicionFinal;
@@ -106,6 +94,7 @@ public class PacManComtroller : MonoBehaviour
         quaternion = Quaternion.Euler(new Vector3(0f, 0f, 0f));
         transform.rotation = quaternion;
 
+        Invoke("Falsear", 0.2f);
 
     }
 
@@ -113,12 +102,17 @@ public class PacManComtroller : MonoBehaviour
     //--------------------------------------------------------- COSAS DEL DISPARO
 
 
-    void Disparar()
+    public void Disparar()
     {
-
-        quaternion = Quaternion.Euler(new Vector3(0f, 0f, -90f));
-        transform.rotation = quaternion;
-        Invoke("Bala", 0.2f);
+        if ((!enMovimiento) && (Time.time >= tiempoUltimoDisparo + retraso))
+        {
+            
+            tiempoUltimoDisparo = Time.time;
+            quaternion = Quaternion.Euler(new Vector3(0f, 0f, -90f));
+            transform.rotation = quaternion;
+            Invoke("Bala", 0.2f);
+        }
+        
 
         
         
@@ -129,5 +123,10 @@ public class PacManComtroller : MonoBehaviour
         Instantiate(Proyectil, Generador.position, Quaternion.identity);
     }
 
+
+    void Falsear()
+    {
+        enMovimiento = false;
+    }
 
 }
