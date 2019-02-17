@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/GhostlyInvaders.unity
+    guid: 1821d8f8154577d40a29df4dcc387ea1
   m_configObjects: {}

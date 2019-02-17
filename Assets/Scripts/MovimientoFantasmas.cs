@@ -9,10 +9,16 @@ public class MovimientoFantasmas : MonoBehaviour
 
     Vector2 PosicionActual;
     Vector2 PosicionFinal;
+    Vector2 PosicionFantasmas;
 
     Vector2 VectorDerecha;
     Vector2 VectorIzquierda;
     Vector2 VectorAbajo;
+
+
+    public GameObject ControladorFantasmas;
+
+
 
     bool moviendoDerecha = false;
 
@@ -21,17 +27,19 @@ public class MovimientoFantasmas : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        VectorDerecha = new Vector2(0.1f, 0f);
+        VectorDerecha = new Vector2(0.01f, 0f);
         VectorIzquierda = -VectorDerecha;
-        VectorAbajo = new Vector2(0f, -1f);
+        VectorAbajo = new Vector2(0f, -0.2f);
 
-        
+        PosicionActual.y = rb.position.y;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        PosicionActual = rb.position;
+        PosicionFantasmas = ControladorFantasmas.transform.position;
+        
+        PosicionActual.x = rb.position.x;
 
         if (moviendoDerecha == true)
         {
@@ -56,6 +64,11 @@ public class MovimientoFantasmas : MonoBehaviour
         rb.transform.position = PosicionFinal;
     }
 
+    void MovimientoAbajo()
+    {
+        PosicionFinal = PosicionFantasmas + VectorAbajo;
+        ControladorFantasmas.transform.position = PosicionFinal;
+    }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -66,11 +79,8 @@ public class MovimientoFantasmas : MonoBehaviour
 
             moviendoDerecha = true;
 
-            PosicionFinal = PosicionActual + VectorAbajo;
-            rb.transform.position = PosicionFinal;
-
-            Debug.Log(PosicionFinal.y);
-
+            MovimientoAbajo();
+            PosicionActual.y = PosicionActual.y + VectorAbajo.y;
         }
         if (collision.gameObject.CompareTag("LimiteDerecha"))
         {
@@ -78,8 +88,8 @@ public class MovimientoFantasmas : MonoBehaviour
 
             moviendoDerecha = false;
 
-            PosicionFinal = PosicionActual + VectorAbajo;
-            rb.transform.position = PosicionFinal;
+            MovimientoAbajo();
+            PosicionActual.y = PosicionActual.y + VectorAbajo.y;
         }
     }
 

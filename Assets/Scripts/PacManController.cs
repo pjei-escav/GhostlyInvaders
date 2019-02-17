@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PacManController : MonoBehaviour
 {
@@ -128,5 +129,17 @@ public class PacManController : MonoBehaviour
     {
         enMovimiento = false;
     }
+
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Fantasma"))
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
+
+
 
 }
