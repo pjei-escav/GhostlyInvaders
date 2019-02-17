@@ -6,11 +6,14 @@ public class MuerteFantasmas : MonoBehaviour
 {
 
     Animator animacion;
+    Collider2D col;
+
 
     // Start is called before the first frame update
     void Start()
     {
         animacion = GetComponent<Animator>();
+        col = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -25,14 +28,10 @@ public class MuerteFantasmas : MonoBehaviour
         if (collision.gameObject.CompareTag("DisparoPacMan"))
         {
             animacion.SetBool("muerto", true);
-            Invoke("Muerte", 1);
+            Destroy(col);
         }
     }
 
 
-    void Muerte()
-    {
-        Destroy(gameObject);
-    }
-
+   
 }

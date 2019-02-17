@@ -29,7 +29,7 @@ public class MovimientoFantasmas : MonoBehaviour
 
         VectorDerecha = new Vector2(0.01f, 0f);
         VectorIzquierda = -VectorDerecha;
-        VectorAbajo = new Vector2(0f, -0.2f);
+        VectorAbajo = new Vector2(0f, -0.15f);
 
         PosicionActual.y = rb.position.y;
     }
