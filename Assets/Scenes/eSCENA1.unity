@@ -568,7 +568,6 @@ GameObject:
   - component: {fileID: 688705926}
   - component: {fileID: 688705925}
   - component: {fileID: 688705924}
-  - component: {fileID: 688705923}
   m_Layer: 0
   m_Name: FilaFantasmas (2)
   m_TagString: Untagged
@@ -576,18 +575,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &688705923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 688705922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4583d06ef6502534797398306415fbae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &688705924
 Rigidbody2D:
   serializedVersion: 4
@@ -1359,7 +1346,6 @@ GameObject:
   - component: {fileID: 1131165436}
   - component: {fileID: 1131165435}
   - component: {fileID: 1131165434}
-  - component: {fileID: 1131165433}
   m_Layer: 0
   m_Name: FilaFantasmas (1)
   m_TagString: Untagged
@@ -1367,18 +1353,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1131165433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1131165432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4583d06ef6502534797398306415fbae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &1131165434
 Rigidbody2D:
   serializedVersion: 4
@@ -2003,7 +1977,6 @@ GameObject:
   - component: {fileID: 1662837928}
   - component: {fileID: 1662837927}
   - component: {fileID: 1662837929}
-  - component: {fileID: 1662837926}
   m_Layer: 0
   m_Name: FilaFantasmas
   m_TagString: Untagged
@@ -2011,18 +1984,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1662837926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662837925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4583d06ef6502534797398306415fbae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1662837927
 BoxCollider2D:
   m_ObjectHideFlags: 0

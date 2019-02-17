@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 7988760280355793501}
   - component: {fileID: 7988760280355793497}
   - component: {fileID: 7988760280355793496}
-  - component: {fileID: 7988760280355793499}
+  - component: {fileID: 8476808149588145430}
   - component: {fileID: 7988760280355793498}
+  - component: {fileID: 6639347429990473101}
   m_Layer: 0
   m_Name: Fantasma
-  m_TagString: Untagged
+  m_TagString: Fantasma
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +102,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!50 &7988760280355793499
+--- !u!50 &8476808149588145430
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -114,8 +115,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 10000
+  m_AngularDrag: 10000
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -162,3 +163,15 @@ PolygonCollider2D:
       - {x: -0.12785715, y: -0.15071428}
       - {x: -0.12785715, y: -0.14999999}
       - {x: -0.06607143, y: -0.15071428}
+--- !u!114 &6639347429990473101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7988760280355793500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f002ab17e5157946b7147eb8b98ba23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
